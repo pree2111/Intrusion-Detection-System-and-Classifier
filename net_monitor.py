@@ -73,6 +73,7 @@ int kretprobe__tcp_v4_connect(struct pt_regs *ctx)
 
 # initialize BPF
 b = BPF(text=bpf_text)
+packet_cnt = bpf.get_table('packet_cnt')
 
 # header
 print("%-6s %-12s %-16s %-16s %-4s" % ("PID", "COMM", "SADDR", "DADDR", "COUNT"))
@@ -106,3 +107,6 @@ while True:
     printb(b"%-6d %-12.12s %-16s %-16s %-4s" % (pid, task,
         inet_ntoa(int(saddr_hs, 16)),
         inet_ntoa(int(daddr_hs, 16)), count))
+
+	
+		
