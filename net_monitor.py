@@ -1,8 +1,31 @@
-
+#!/usr/bin/python
+#
+# tcpv4connect    Trace TCP IPv4 connect()s and count packets.
+#        For Linux, uses BCC, eBPF. Embedded C.
+#
+# USAGE: tcpv4connect [-h] [-t] [-p PID]
+#
+# This script traces TCP IPv4 connect()s and counts packets.
+#
+# All IPv4 connection attempts are traced, even if they ultimately fail.
+#
+# Copyright (c) 2015 Brendan Gregg.
+# Licensed under the Apache License, Version 2.0 (the "License")
+#
+# 15-Oct-2015    Brendan Gregg    Created this.
 
 from __future__ import print_function
 from bcc import BPF
 from bcc.utils import printb
+
+# Define the structure for the key
+class key_t(ct.Structure):
+    _fields_ = [
+        ("saddr", ct.c_uint32),
+        ("daddr", ct.c_uint32)
+    ]
+
+import ctypes as ct
 
 # Define BPF program
 bpf_text = """
@@ -47,8 +70,10 @@ int kretprobe__tcp_v4_connect(struct pt_regs *ctx)
     u32 daddr = skp->__sk_common.skc_daddr;
     u16 dport = skp->__sk_common.skc_dport;
 
-    // Count packet
+    // Create key for packet count hash map
     struct key_t key = {.saddr = saddr, .daddr = daddr};
+
+    // Count packet
     u64 *count = packet_count.lookup(&key);
     if (count) {
         (*count)++;
