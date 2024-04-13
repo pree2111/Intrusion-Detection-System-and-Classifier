@@ -9,6 +9,10 @@
 ##If the source port is a high-numbered ephemeral port and the destination port is a well-known port (e.g., 80 for HTTP or 443 for HTTPS), then the packets are likely outgoing packets from your machine. If the source port is a well-known port and the destination port is a high-numbered ephemeral port, then the packets are likely incoming packets to your machine.
 # bit messed up. i am pretty confused right now. like sport and port are super random, probably because it is capturing all recieving packets instead of just connected tcp connections.
 #i think dport and sport meaning are lining up with the rcv function but ofc i cant see any popoular ports in the listing. bit weird.
+# i think sport and sport are being shown correctly
+# chatgpt says that sourceip will be mostly the ip of the machine on which the bpf program is running
+#im gonna try to modify this according to the suggestion given by chatgpt which is in the program changed_stack.py where i attatch the probe to a different function in the tcp stack
+#still still still getting the same thing. this is annoying. gonna leave it now and just focus on other stuff. tysm.
 
 
 from __future__ import print_function
