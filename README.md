@@ -10,7 +10,7 @@ Scalability for Growing Needs: The ability to adapt to increasing traffic and ne
 
 # How to use this?
 <ul> The staging folder has everything that we need to run this code. </ul>
-<ul> Download this folder on your Linux system. </ul>
+<ul> Clone the repo or download the zip folder on your system </ul>
 <ul> From your terminal navigate to this staging folder </ul>
 <ul>                 ./ids_final.sh                       </ul> 
 <ul>Put in your root password. </ul>
@@ -18,7 +18,7 @@ Scalability for Growing Needs: The ability to adapt to increasing traffic and ne
 
 # Exit the code
 <ul> Press Ctrl+Z </ul>
-<ul> After the code stops type in the following in your terminal </ul>
+<ul> After the code stops execute the following command in your terminal </ul>
 <ul>                sudo killall -9 python3           </ul>
 
 # We hope you like the idea and innovation behind it!
