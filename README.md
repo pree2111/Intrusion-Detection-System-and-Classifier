@@ -12,7 +12,7 @@ Scalability for Growing Needs: The ability to adapt to increasing traffic and ne
 <ul> The staging folder has everything that we need to run this code. </ul>
 <ul> Download this folder on your Linux system. </ul>
 <ul> From your terminal navigate to this staging folder </ul>
-<ul>                 ./ids_script                       </ul> 
+<ul>                 ./ids_final.sh                       </ul> 
 <ul>Put in your root password. </ul>
 <ul> If you want to exit the program before the 5 minutes runtime follow the following steps </ul>
 
