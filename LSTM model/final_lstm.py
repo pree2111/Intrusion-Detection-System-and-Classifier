@@ -16,10 +16,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
-from google.colab import drive
+# from google.colab import drive
 
 # Mount Google Drive
-drive.mount('/content/drive', force_remount = True)
+# drive.mount('/content/drive', force_remount = True)
 
 df = pd.read_csv('/content/drive/MyDrive/DataEBPF.csv')
 
@@ -146,7 +146,7 @@ train_loader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True)
 val_loader = DataLoader(val_dataset, batch_size=batch_size, shuffle=False)
 
 # Model, criterion, and optimizer initialization
-model = LSTMClassifier(input_size=16, hidden_size=128, num_layers=2, num_classes=1)  # Adjust num_classes accordingly
+model = LSTMClassifier(input_size=11, hidden_size=128, num_layers=2, num_classes=2)  # Adjust num_classes accordingly
 criterion = nn.CrossEntropyLoss()
 optimizer = optim.Adam(model.parameters(), lr=0.02)
 
@@ -193,8 +193,8 @@ drive.mount('/content/drive', force_remount=True)
 df = pd.read_csv('/content/drive/MyDrive/DataEBPF.csv')
 
 # Define numerical and label columns
-numerical_columns = ['dur', 'spkts', 'dpkts', 'sbytes', 'dbytes', 'sinpkt', 'dinpkt', 'tcprtt', 'synack', 'ackdat', 'smean', 'dmean', 'is_sm_ips_ports']
-label_columns = ['proto', 'service', 'attack_cat']
+numerical_columns = ['dur', 'spkts', 'dpkts', 'sbytes', 'dbytes', 'sinpkt', 'dinpkt', 'smean', 'dmean', 'attack_cat','proto']
+label_columns = ['proto', 'attack_cat']
 
 # Scaling numerical columns
 scaler = StandardScaler()
@@ -272,5 +272,6 @@ for inputs, labels in train_loader:
     print("Loss:", loss.item())
     print("Accuracy:", accuracy_percent,"%")
 
-print('hi')
+    torch.save(model.state_dict(), 'lstm.pth')
+
 

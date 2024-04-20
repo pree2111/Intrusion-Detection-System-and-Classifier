@@ -71,11 +71,11 @@ int kprobe__ip_finish_output(struct pt_regs *ctx, struct net *net, struct sock *
 }
 """
 
+# Define protocol names
 protocol_names = {
     1: "ICMP",
     6: "TCP",
     17: "UDP",
-    89: "OSPF",
     # Add more protocol numbers and their corresponding names as needed
 }
 
