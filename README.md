@@ -12,9 +12,8 @@ Scalability for Growing Needs: The ability to adapt to increasing traffic and ne
 <ul> The staging folder has everything that we need to run this code. </ul>
 <ul> Download this folder on your Linux system. </ul>
 <ul> From your terminal navigate to this staging folder </ul>
-``` bash
-#!/bin/bash
-./ids_final
+```rb
+./ids_script
 ```
 
 
