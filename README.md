@@ -22,4 +22,4 @@ Scalability for Growing Needs: The ability to adapt to increasing traffic and ne
 <ul>                sudo killall -9 python3           </ul>
 
 # We hope you like the idea and innovation behind it!
-Special thanks to Brendan Gregg and Team Rebase!
+Special thanks to Brendan Gregg!
